@@ -5,8 +5,8 @@ using  Umbraco.Cms.Core.PublishedCache;
 using  Umbraco.Cms.Infrastructure.ModelsBuilder;
 using  Umbraco.Cms.Core;
 using  Umbraco.Extensions;
-[assembly:ModelsBuilderAssembly(IsInMemory = true, SourceHash = "653f72a226a81e699f41bf004b841def34852019")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.10")]
+[assembly:ModelsBuilderAssembly(IsInMemory = true, SourceHash = "1ed9e86896715ca9b5234e8b2698b659e087be17")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.5")]
 
 
 // FILE: models.generated.cs
@@ -36,7 +36,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Results</summary>
 	[PublishedModel("results")]
-	public partial class Results : PublishedContentModel, IPage
+	public partial class Results : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -76,49 +76,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		[ImplementPropertyType("responseTime")]
 		public virtual int ResponseTime => this.Value<int>(_publishedValueFallback, "responseTime");
-
-		///<summary>
-		/// Description
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		[ImplementPropertyType("description")]
-		public virtual string Description => global::Umbraco.Cms.Web.Common.PublishedModels.Page.GetDescription(this, _publishedValueFallback);
-
-		///<summary>
-		/// PageName
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		[ImplementPropertyType("pageName")]
-		public virtual string PageName => global::Umbraco.Cms.Web.Common.PublishedModels.Page.GetPageName(this, _publishedValueFallback);
-
-		///<summary>
-		/// PageUrl
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		[ImplementPropertyType("pageUrl")]
-		public virtual string PageUrl => global::Umbraco.Cms.Web.Common.PublishedModels.Page.GetPageUrl(this, _publishedValueFallback);
-	}
-
-	// Mixin Content Type with alias "page"
-	/// <summary>Page</summary>
-	public partial interface IPage : IPublishedContent
-	{
-		/// <summary>Description</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		string Description { get; }
-
-		/// <summary>PageName</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		string PageName { get; }
-
-		/// <summary>PageUrl</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		string PageUrl { get; }
 	}
 
 	/// <summary>Page</summary>
 	[PublishedModel("page")]
-	public partial class Page : PublishedContentModel, IPage
+	public partial class Page : PublishedContentModel, INavigationBar
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -150,33 +112,151 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		[ImplementPropertyType("description")]
-		public virtual string Description => GetDescription(this, _publishedValueFallback);
-
-		/// <summary>Static getter for Description</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		public static string GetDescription(IPage that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "description");
+		public virtual string Description => this.Value<string>(_publishedValueFallback, "description");
 
 		///<summary>
 		/// PageName
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		[ImplementPropertyType("pageName")]
-		public virtual string PageName => GetPageName(this, _publishedValueFallback);
-
-		/// <summary>Static getter for PageName</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		public static string GetPageName(IPage that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "pageName");
+		public virtual string PageName => this.Value<string>(_publishedValueFallback, "pageName");
 
 		///<summary>
 		/// PageUrl
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		[ImplementPropertyType("pageUrl")]
-		public virtual string PageUrl => GetPageUrl(this, _publishedValueFallback);
+		public virtual string PageUrl => this.Value<string>(_publishedValueFallback, "pageUrl");
 
-		/// <summary>Static getter for PageUrl</summary>
+		///<summary>
+		/// NavItems
+		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		public static string GetPageUrl(IPage that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "pageUrl");
+		[ImplementPropertyType("navItems")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.HeaderNavigationItem> NavItems => global::Umbraco.Cms.Web.Common.PublishedModels.NavigationBar.GetNavItems(this, _publishedValueFallback);
+
+		///<summary>
+		/// Visible
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("visible")]
+		public virtual bool Visible => global::Umbraco.Cms.Web.Common.PublishedModels.NavigationBar.GetVisible(this, _publishedValueFallback);
+	}
+
+	/// <summary>HeaderNavigationItem</summary>
+	[PublishedModel("headerNavigationItem")]
+	public partial class HeaderNavigationItem : PublishedElementModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new const string ModelTypeAlias = "headerNavigationItem";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new static IPublishedContentType GetModelContentType(IPublishedSnapshotAccessor publishedSnapshotAccessor)
+			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<HeaderNavigationItem, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
+#pragma warning restore 0109
+
+		private IPublishedValueFallback _publishedValueFallback;
+
+		// ctor
+		public HeaderNavigationItem(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+			: base(content, publishedValueFallback)
+		{
+			_publishedValueFallback = publishedValueFallback;
+		}
+
+		// properties
+
+		///<summary>
+		/// Content
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("contentId")]
+		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent ContentId => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "contentId");
+
+		///<summary>
+		/// Label
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("label")]
+		public virtual string Label => this.Value<string>(_publishedValueFallback, "label");
+
+		///<summary>
+		/// Visible
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("visible")]
+		public virtual bool Visible => this.Value<bool>(_publishedValueFallback, "visible");
+	}
+
+	// Mixin Content Type with alias "navigationBar"
+	/// <summary>NavigationBar</summary>
+	public partial interface INavigationBar : IPublishedContent
+	{
+		/// <summary>NavItems</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.HeaderNavigationItem> NavItems { get; }
+
+		/// <summary>Visible</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		bool Visible { get; }
+	}
+
+	/// <summary>NavigationBar</summary>
+	[PublishedModel("navigationBar")]
+	public partial class NavigationBar : PublishedContentModel, INavigationBar
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new const string ModelTypeAlias = "navigationBar";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new static IPublishedContentType GetModelContentType(IPublishedSnapshotAccessor publishedSnapshotAccessor)
+			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<NavigationBar, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
+#pragma warning restore 0109
+
+		private IPublishedValueFallback _publishedValueFallback;
+
+		// ctor
+		public NavigationBar(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+			: base(content, publishedValueFallback)
+		{
+			_publishedValueFallback = publishedValueFallback;
+		}
+
+		// properties
+
+		///<summary>
+		/// NavItems
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("navItems")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.HeaderNavigationItem> NavItems => GetNavItems(this, _publishedValueFallback);
+
+		/// <summary>Static getter for NavItems</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.HeaderNavigationItem> GetNavItems(INavigationBar that, IPublishedValueFallback publishedValueFallback) => that.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.HeaderNavigationItem>>(publishedValueFallback, "navItems");
+
+		///<summary>
+		/// Visible
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("visible")]
+		public virtual bool Visible => GetVisible(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Visible</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static bool GetVisible(INavigationBar that, IPublishedValueFallback publishedValueFallback) => that.Value<bool>(publishedValueFallback, "visible");
 	}
 
 	/// <summary>Folder</summary>
