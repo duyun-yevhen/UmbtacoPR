@@ -16,8 +16,8 @@ using Umbraco.Cms.Infrastructure.ModelsBuilder;
 using Umbraco.Cms.Core;
 using Umbraco.Extensions;
 
-[assembly:ModelsBuilderAssembly(IsInMemory = true, SourceHash = "bb1cc9f81ccb0da146103c7c43a28917802173c8")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.3")]
+[assembly:ModelsBuilderAssembly(IsInMemory = true, SourceHash = "9247eeb9ee125eaa607196b44fae4632f4975dba")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.7")]
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
@@ -170,8 +170,8 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		/// Content
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		[ImplementPropertyType("contentId")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent ContentId => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "contentId");
+		[ImplementPropertyType("contentLink")]
+		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent ContentLink => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "contentLink");
 
 		///<summary>
 		/// Label

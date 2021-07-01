@@ -70,5 +70,6 @@
     <!-- Set this to true if ModelsBuilder mode is not InMemoryAuto-->
     <PropertyGroup>
         <RazorCompileOnBuild>false</RazorCompileOnBuild>
+        <StartupObject>UmbracoProject.Program</StartupObject>
     </PropertyGroup>
 </Project>

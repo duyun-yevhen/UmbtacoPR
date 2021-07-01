@@ -1,4 +1,5 @@
 ﻿@using Umbraco.Cms.Core.Services
+@using Umbraco.Cms.Core.Models.PublishedContent
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Page>
 @inject ILocalizationService LocalizationService
 
@@ -12,15 +13,17 @@
 			</button>
 			<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
 				<ul class="navbar-nav flex-grow-1">
-					@foreach (var navItem in @Model.NavItems.ToList())
+
+
+					@foreach (var navItem in Model.Value<IEnumerable<IPublishedElement>>("NavItems"))
+					{
+						if ((bool)navItem.Value("Visible"))
 						{
-							if (navItem.Visible)
-							{
-								<li class="nav-item">
-									<a class="nav-link text-dark" href="@navItem.Content">@navItem.label</a>
-								</li>
-							}
+							<li class="nav-item">
+								<a class="nav-link text-dark" href="@(((IPublishedContent)navItem.Value("ContentLink")).Url())">@navItem.Value("Label")</a>
+							</li>
 						}
+					}
 				</ul>
 			</div>
 
