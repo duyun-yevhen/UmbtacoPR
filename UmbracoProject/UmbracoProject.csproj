@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Umbraco.Cms" Version="9.0.0-beta004" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <Compile Remove="umbraco\Data\**" />
+        <Compile Remove="umbraco\logs\**" />
+        <Compile Remove="umbraco\MediaCache\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <EmbeddedResource Remove="umbraco\Data\**" />
+        <EmbeddedResource Remove="umbraco\logs\**" />
+        <EmbeddedResource Remove="umbraco\MediaCache\**" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="umbraco\Data\**" />
+        <None Remove="umbraco\logs\**" />
+        <None Remove="umbraco\MediaCache\**" />
+        <None Include="config\**\*.*">
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+        </None>
+        <None Include="umbraco\**\*.*">
+            <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+            <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <Content Remove="umbraco\Data\**" />
+        <Content Remove="umbraco\logs\**" />
+        <Content Remove="umbraco\MediaCache\**" />
+    </ItemGroup>
+    <ItemGroup>
+      <None Include="wwwroot\js\mvc-grid\mvc-grid.js" />
+      <None Include="wwwroot\js\site.js" />
+      <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+      <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+      <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+      <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+      <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.css.map" />
+      <None Include="wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map" />
+      <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js" />
+      <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map" />
+      <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js" />
+      <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map" />
+      <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js" />
+      <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.js.map" />
+      <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js" />
+      <None Include="wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map" />
+      <None Include="wwwroot\lib\bootstrap\LICENSE" />
+      <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+      <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+      <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+      <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+      <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+      <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+      <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+      <None Include="wwwroot\lib\jquery\dist\jquery.js" />
+      <None Include="wwwroot\lib\jquery\dist\jquery.min.js" />
+      <None Include="wwwroot\lib\jquery\dist\jquery.min.map" />
+    </ItemGroup>
+
+    <!-- Set this to true if ModelsBuilder mode is not InMemoryAuto-->
+    <PropertyGroup>
+        <RazorCompileOnBuild>false</RazorCompileOnBuild>
+    </PropertyGroup>
+</Project>

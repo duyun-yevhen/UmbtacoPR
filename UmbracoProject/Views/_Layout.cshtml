@@ -1,0 +1,35 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>@ViewData["Title"] - TestTest</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" />
+	<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
+</head>
+
+<body>
+	@await Html.PartialAsync("_Header")
+
+	<div class="container">
+		<main role="main" class="pb-3">
+			@RenderBody()
+		</main>
+	</div>
+
+	@await Html.PartialAsync("_Footer")
+
+	
+	
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	<script src="~/js/mvc-grid/mvc-grid.js"></script>
+
+	@RenderSection("Scripts", required: false)
+	<script>
+		document.querySelectorAll(".mvc-grid").forEach(element => new MvcGrid(element));
+	</script>
+</body>

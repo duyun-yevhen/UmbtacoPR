@@ -1,0 +1,81 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@using Umbraco.Cms.Core.Services
+@inject ILocalizationService LocalizationService
+<header>
+	<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+		<div class="container">
+			<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">TestTest</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+				<ul class="navbar-nav flex-grow-1">
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-controller="Results" asp-action="TestResults">Tests Results</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+					</li>
+				</ul>
+			</div>
+			<div class="dropdown">
+				<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					Languge
+				</button>
+
+
+				<div>
+					<form id="culture-switcher">
+						<select name="culture" id="culture-options">
+							<option></option>
+							@foreach (var culture in LocalizationService.GetAllLanguages())
+							{
+								<option value="@culture.CultureInfo.NativeName" selected="@(culture.CultureInfo.NativeName == culture.CultureInfo.NativeName)">@culture.CultureInfo.NativeName</option>
+							}
+						</select>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</nav>
+</header>
+
+<script>
+	document.getElementById("culture-options").addEventListener("change", () => {
+		document.getElementById("culture-switcher").submit();
+	});
+</script>
+@*@foreach (var culture in LocalizationService.GetAllLanguages())
+{
+	@if (culture.CultureInfo.NativeName == Umbraco.CultureDictionary.Culture.NativeName)
+	{
+		<a class="dropdown-item active" href="#">@culture.CultureInfo.NativeName</a>
+	}
+	else
+	{
+		<a class="dropdown-item" href="">@culture.CultureInfo.NativeName</a>
+	}
+}*@
+
+<form class="dropdown-menu p-4">
+	<div class="form-group">
+		<label for="exampleDropdownFormEmail2">Email address</label>
+		<input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
+	</div>
+	<div class="form-group">
+		<label for="exampleDropdownFormPassword2">Password</label>
+		<input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
+	</div>
+	<div class="form-check">
+		<input type="checkbox" class="form-check-input" id="dropdownCheck2">
+		<label class="form-check-label" for="dropdownCheck2">
+			Remember me
+		</label>
+	</div>
+	<button type="submit" class="btn btn-primary">Sign in</button>
+</form>
