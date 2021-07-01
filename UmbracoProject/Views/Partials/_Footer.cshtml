@@ -1,7 +1,17 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Page>
 
 <footer class="border-top footer text-muted">
-		<div class="container">
-			&copy; 2021 - TestTest - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-		</div>
+	<div class="container">
+		@*@foreach (var navItem in @Model.NavItems.ToList())
+		{
+			if (navItem.Visible)
+			{
+				<li class="nav-item">
+					<a class="nav-link text-dark" href="@navItem.Content">@navItem.label</a>
+				</li>
+			}
+		}*@
+
+
+	</div>
 </footer>
