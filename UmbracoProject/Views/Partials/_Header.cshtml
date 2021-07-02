@@ -1,21 +1,28 @@
 ﻿@using Umbraco.Cms.Core.Services
 @using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Core.Models
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Page>
 @inject ILocalizationService LocalizationService
 
+
 <header>
+
 	<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
 		<div class="container">
-			<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">@Model.PageName</a>
+			<a class="navbar-brand text-nowrap" href="@Model.Root().Url()">
+				<img src="@(Model.Root().Value<MediaWithCrops>("SiteLogo").MediaItem.Url())" style="width:128px" />		     
+				
+				@Model.Root().Value("SiteName")
+			</a>
+
+
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
 					aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
 				<ul class="navbar-nav flex-grow-1">
-
-
-					@foreach (var navItem in Model.Value<IEnumerable<IPublishedElement>>("NavItems"))
+					@foreach (var navItem in Model.Root().Value<IEnumerable<IPublishedElement>>("NavItems"))
 					{
 						if ((bool)navItem.Value("Visible"))
 						{
@@ -27,9 +34,8 @@
 				</ul>
 			</div>
 
-
-			<div class="dropdown show">
-				<a class="btn btn-secondary dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<div class="dropdown">
+				<a class="btn btn-light dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<svg style="margin-right:12px;width:16px;height:16px" viewBox="0 0 18 18" focusable="false" data-icon="global" width="100%" height="100%" fill="currentColor" aria-hidden="true"><path d="M15.362 2.63609C13.6626 0.936183 11.4031 0 8.99981 0C6.59649 0 4.33703 0.936183 2.63765 2.63609C0.938308 4.33596 0.00244141 6.59602 0.00244141 9C0.00244141 11.404 0.938308 13.664 2.63765 15.3639C4.33703 17.0638 6.59649 18 8.99981 18C11.4031 18 13.6626 17.0638 15.362 15.3639C17.0613 13.664 17.9972 11.404 17.9972 9C17.9972 6.59602 17.0613 4.33596 15.362 2.63609ZM8.99981 16.9456C8.40746 16.9456 7.75494 16.146 7.25428 14.8066C6.94328 13.9746 6.70783 12.9912 6.5567 11.9166H11.4429C11.2918 12.9912 11.0563 13.9745 10.7453 14.8066C10.2447 16.146 9.59216 16.9456 8.99981 16.9456ZM6.43823 10.8623C6.38674 10.2592 6.3601 9.63547 6.3601 9C6.3601 8.16325 6.40607 7.34677 6.4946 6.5712H11.505C11.5935 7.3468 11.6395 8.16328 11.6395 9C11.6395 9.63547 11.6129 10.2592 11.5614 10.8623H6.43823ZM1.05682 9C1.05682 8.16307 1.18584 7.34607 1.43344 6.5712H5.43442C5.34972 7.35165 5.30572 8.16729 5.30572 9C5.30572 9.6333 5.33124 10.2567 5.38062 10.8623H1.27553C1.13143 10.2594 1.05682 9.63547 1.05682 9ZM8.99981 1.05438C9.59216 1.05438 10.2447 1.85398 10.7453 3.1934C11.0008 3.87688 11.2053 4.66246 11.354 5.51679H6.64566C6.79433 4.66243 6.99884 3.87684 7.25432 3.1934C7.75494 1.85398 8.40742 1.05438 8.99981 1.05438ZM12.5652 6.57117H16.5661C16.8138 7.34607 16.9428 8.16303 16.9428 8.99996C16.9428 9.63547 16.8681 10.2594 16.7241 10.8622H12.619C12.6684 10.2566 12.6939 9.63326 12.6939 8.99996C12.6939 8.16729 12.6499 7.35162 12.5652 6.57117ZM16.1428 5.51679H12.4224C12.2604 4.52683 12.0284 3.61459 11.733 2.82422C11.5092 2.22555 11.2539 1.71593 10.9738 1.30065C12.3402 1.64866 13.5932 2.35815 14.6163 3.38153C15.249 4.01444 15.7613 4.73553 16.1428 5.51679ZM3.38331 3.38153C4.40633 2.35819 5.65939 1.6487 7.02576 1.30065C6.74569 1.71593 6.49042 2.22555 6.26665 2.82422C5.97121 3.61459 5.73925 4.52683 5.57719 5.51679H1.85681C2.23836 4.73553 2.75061 4.01444 3.38331 3.38153ZM1.60724 11.9167H5.49319C5.65412 13.1258 5.91568 14.2367 6.26668 15.1758C6.49045 15.7745 6.74572 16.2841 7.0258 16.6994C5.65946 16.3513 4.40637 15.6418 3.38334 14.6185C2.60033 13.8352 2.0014 12.9171 1.60724 11.9167ZM14.6163 14.6185C13.5933 15.6418 12.3402 16.3513 10.9738 16.6994C11.2539 16.2841 11.5092 15.7745 11.733 15.1758C12.084 14.2367 12.3455 13.1258 12.5065 11.9167H16.3924C15.9982 12.9171 15.3993 13.8352 14.6163 14.6185Z"></path></svg>
 				</a>
 
@@ -37,13 +43,14 @@
 					@foreach (var (culture, info) in Model.Cultures)
 					{
 						<a class="dropdown-item
-						@(culture == Umbraco.CultureDictionary.Culture.ToString().ToLower() ? "active" : "")"
+						@(culture != Umbraco.CultureDictionary.Culture.ToString().ToLower() ? "bg-light" : "bg-secondary")"
 						   href="@Umbraco.Content(Model.Id).Url(culture)">
 							@LocalizationService.GetLanguageByIsoCode(culture).CultureInfo.NativeName
 						</a>
 					}
 				</div>
 			</div>
+
 		</div>
 	</nav>
 </header>

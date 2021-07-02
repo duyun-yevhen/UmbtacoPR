@@ -16,8 +16,8 @@ using Umbraco.Cms.Infrastructure.ModelsBuilder;
 using Umbraco.Cms.Core;
 using Umbraco.Extensions;
 
-[assembly:ModelsBuilderAssembly(IsInMemory = true, SourceHash = "9247eeb9ee125eaa607196b44fae4632f4975dba")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.7")]
+[assembly:ModelsBuilderAssembly(IsInMemory = true, SourceHash = "28d631dd6f9c891d85ba49ae3bff05d0a8d5cff2")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.3")]
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
@@ -65,9 +65,9 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual int ResponseTime => this.Value<int>(_publishedValueFallback, "responseTime");
 	}
 
-	/// <summary>Page</summary>
+	/// <summary>PageTemplate</summary>
 	[PublishedModel("page")]
-	public partial class Page : PublishedContentModel, INavigationBar
+	public partial class Page : PublishedContentModel, IContent, INavigationBar, ISotial
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -102,13 +102,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string Description => this.Value<string>(_publishedValueFallback, "description");
 
 		///<summary>
-		/// Logo
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		[ImplementPropertyType("logo")]
-		public virtual global::Umbraco.Core.Models.MediaWithCrops Logo => this.Value<global::Umbraco.Core.Models.MediaWithCrops>(_publishedValueFallback, "logo");
-
-		///<summary>
 		/// PageName
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
@@ -123,6 +116,48 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string PageUrl => this.Value<string>(_publishedValueFallback, "pageUrl");
 
 		///<summary>
+		/// SiteLogo
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("siteLogo")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops SiteLogo => this.Value<global::Umbraco.Core.Models.MediaWithCrops>(_publishedValueFallback, "siteLogo");
+
+		///<summary>
+		/// SiteName
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("siteName")]
+		public virtual string SiteName => this.Value<string>(_publishedValueFallback, "siteName");
+
+		///<summary>
+		/// GridText
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("gridText")]
+		public virtual global::Newtonsoft.Json.Linq.JToken GridText => global::Umbraco.Cms.Web.Common.PublishedModels.Content.GetGridText(this, _publishedValueFallback);
+
+		///<summary>
+		/// Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("title")]
+		public virtual string Title => global::Umbraco.Cms.Web.Common.PublishedModels.Content.GetTitle(this, _publishedValueFallback);
+
+		///<summary>
+		/// VideoDescription
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("videoDescription")]
+		public virtual string VideoDescription => global::Umbraco.Cms.Web.Common.PublishedModels.Content.GetVideoDescription(this, _publishedValueFallback);
+
+		///<summary>
+		/// VideoUrl
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("videoUrl")]
+		public virtual string VideoUrl => global::Umbraco.Cms.Web.Common.PublishedModels.Content.GetVideoUrl(this, _publishedValueFallback);
+
+		///<summary>
 		/// NavItems
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
@@ -135,6 +170,20 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		[ImplementPropertyType("visible")]
 		public virtual bool Visible => global::Umbraco.Cms.Web.Common.PublishedModels.NavigationBar.GetVisible(this, _publishedValueFallback);
+
+		///<summary>
+		/// SocialLinks
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("socialLinksList")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.SocialLinkItem> SocialLinksList => global::Umbraco.Cms.Web.Common.PublishedModels.Sotial.GetSocialLinksList(this, _publishedValueFallback);
+
+		///<summary>
+		/// SocialLinksMessage
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("socialLinksMessage")]
+		public virtual string SocialLinksMessage => global::Umbraco.Cms.Web.Common.PublishedModels.Sotial.GetSocialLinksMessage(this, _publishedValueFallback);
 	}
 
 	/// <summary>HeaderNavigationItem</summary>
@@ -297,6 +346,13 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string LinkUrl => this.Value<string>(_publishedValueFallback, "linkUrl");
 
 		///<summary>
+		/// SocialName
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("sotcalName")]
+		public virtual string SotcalName => this.Value<string>(_publishedValueFallback, "sotcalName");
+
+		///<summary>
 		/// Visible
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
@@ -304,9 +360,22 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual bool Visible => this.Value<bool>(_publishedValueFallback, "visible");
 	}
 
-	/// <summary>SotialLinks</summary>
+	// Mixin Content Type with alias "sotial"
+	/// <summary>SocialLinks</summary>
+	public partial interface ISotial : IPublishedContent
+	{
+		/// <summary>SocialLinks</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.SocialLinkItem> SocialLinksList { get; }
+
+		/// <summary>SocialLinksMessage</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		string SocialLinksMessage { get; }
+	}
+
+	/// <summary>SocialLinks</summary>
 	[PublishedModel("sotial")]
-	public partial class Sotial : PublishedContentModel
+	public partial class Sotial : PublishedContentModel, ISotial
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -334,11 +403,121 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// SotialLinks
+		/// SocialLinks
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		[ImplementPropertyType("sotialLinksList")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.SocialLinkItem> SotialLinksList => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.SocialLinkItem>>(_publishedValueFallback, "sotialLinksList");
+		[ImplementPropertyType("socialLinksList")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.SocialLinkItem> SocialLinksList => GetSocialLinksList(this, _publishedValueFallback);
+
+		/// <summary>Static getter for SocialLinks</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.SocialLinkItem> GetSocialLinksList(ISotial that, IPublishedValueFallback publishedValueFallback) => that.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.SocialLinkItem>>(publishedValueFallback, "socialLinksList");
+
+		///<summary>
+		/// SocialLinksMessage
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("socialLinksMessage")]
+		public virtual string SocialLinksMessage => GetSocialLinksMessage(this, _publishedValueFallback);
+
+		/// <summary>Static getter for SocialLinksMessage</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static string GetSocialLinksMessage(ISotial that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "socialLinksMessage");
+	}
+
+	// Mixin Content Type with alias "content"
+	/// <summary>Content</summary>
+	public partial interface IContent : IPublishedContent
+	{
+		/// <summary>GridText</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		global::Newtonsoft.Json.Linq.JToken GridText { get; }
+
+		/// <summary>Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		string Title { get; }
+
+		/// <summary>VideoDescription</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		string VideoDescription { get; }
+
+		/// <summary>VideoUrl</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		string VideoUrl { get; }
+	}
+
+	/// <summary>Content</summary>
+	[PublishedModel("content")]
+	public partial class Content : PublishedContentModel, IContent
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new const string ModelTypeAlias = "content";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new static IPublishedContentType GetModelContentType(IPublishedSnapshotAccessor publishedSnapshotAccessor)
+			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<Content, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
+#pragma warning restore 0109
+
+		private IPublishedValueFallback _publishedValueFallback;
+
+		// ctor
+		public Content(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+			: base(content, publishedValueFallback)
+		{
+			_publishedValueFallback = publishedValueFallback;
+		}
+
+		// properties
+
+		///<summary>
+		/// GridText
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("gridText")]
+		public virtual global::Newtonsoft.Json.Linq.JToken GridText => GetGridText(this, _publishedValueFallback);
+
+		/// <summary>Static getter for GridText</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static global::Newtonsoft.Json.Linq.JToken GetGridText(IContent that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Newtonsoft.Json.Linq.JToken>(publishedValueFallback, "gridText");
+
+		///<summary>
+		/// Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("title")]
+		public virtual string Title => GetTitle(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static string GetTitle(IContent that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "title");
+
+		///<summary>
+		/// VideoDescription
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("videoDescription")]
+		public virtual string VideoDescription => GetVideoDescription(this, _publishedValueFallback);
+
+		/// <summary>Static getter for VideoDescription</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static string GetVideoDescription(IContent that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "videoDescription");
+
+		///<summary>
+		/// VideoUrl
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("videoUrl")]
+		public virtual string VideoUrl => GetVideoUrl(this, _publishedValueFallback);
+
+		/// <summary>Static getter for VideoUrl</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static string GetVideoUrl(IContent that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "videoUrl");
 	}
 
 	/// <summary>Folder</summary>

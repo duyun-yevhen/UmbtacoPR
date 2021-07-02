@@ -1,17 +1,51 @@
-﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Page>
+﻿@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Core.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Page>
 
 <footer class="border-top footer text-muted">
-	<div class="container">
-		@*@foreach (var navItem in @Model.NavItems.ToList())
-		{
-			if (navItem.Visible)
+	<div class="container navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
+		<a class="navbar-brand text-nowrap" href="@Model.Root().Url()">
+			<img src="@(Model.Root().Value<MediaWithCrops>("SiteLogo").MediaItem.Url())" style="width:64px" />
+
+			@Model.Root().Value("SiteName")
+		</a>
+
+		<ul class="navbar-nav flex-grow-1">
+			@foreach (var navItem in Model.Root().Value<IEnumerable<IPublishedElement>>("NavItems"))
 			{
-				<li class="nav-item">
-					<a class="nav-link text-dark" href="@navItem.Content">@navItem.label</a>
-				</li>
+				if ((bool)navItem.Value("Visible"))
+				{
+					<li class="nav-item">
+						<a class="nav-link text-dark" href="@(((IPublishedContent)navItem.Value("ContentLink")).Url())">@navItem.Value("Label")</a>
+					</li>
+				}
 			}
-		}*@
+		</ul>
 
+		@{
+			var sotialLinks = Model.Root().Value<IEnumerable<IPublishedElement>>("SocialLinksList");
+			if (sotialLinks != null)
+			{
+				<div class="h4">
+					@Model.Root().Value("SocialLinksMessage")
+				</div>
 
+				<ul class="navbar-nav flex-grow-1">
+					@foreach (var sotialLink in sotialLinks)
+					{
+						if ((bool)sotialLink.Value("Visible"))
+						{
+							var icon = sotialLink.Value<MediaWithCrops>("Icon");
+							<li class="nav-item">
+								<a class="nav-link text-dark" target="_blank" href="@sotialLink.Value("LinkUrl")">
+									<img src="@icon.MediaItem.Url()" style="height:32px; text-align: center" />
+								</a>
+							</li>
+						}
+					}
+				</ul>
+			}
+		}
 	</div>
+
 </footer>
