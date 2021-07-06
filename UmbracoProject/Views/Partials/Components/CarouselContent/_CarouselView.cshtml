@@ -3,26 +3,27 @@
 
 @using Umbraco.Core.Models
 
-<div class="container shadow p-3">
+<div class="container shadow p-3" align="center">
 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width:800px">
 		<div class="carousel-inner">
 			<div class="carousel-item active">
-				<img class="d-block w-100" src="@(Model.Value<IEnumerable<IPublishedElement>>("CarouselList").First().Value<MediaWithCrops>("CarouselImage").MediaItem.Url())">
+				<img class="d-block w-100" src="@(Model.Value<IEnumerable<IPublishedElement>>("CarouselList").First().Value<MediaWithCrops>("BannerImage").MediaItem.Url())">
 				<div class="carousel-caption d-none d-md-block">
-					<h5>@(Model.Value<IEnumerable<IPublishedElement>>("CarouselList").First().Value("CarouselItemHeader"))</h5>
-					<p>@(Model.Value<IEnumerable<IPublishedElement>>("CarouselList").First().Value("CarouselItemDescription"))</p>
+					<h5>@(Model.Value<IEnumerable<IPublishedElement>>("CarouselList").First().Value("BannerHeader"))</h5>
+					<p>@(Model.Value<IEnumerable<IPublishedElement>>("CarouselList").First().Value("BannerDescription"))</p>
 				</div>
 			</div>
 			@foreach (var i in Model.Value<IEnumerable<IPublishedElement>>("CarouselList").Skip(1))
 			{
 				<div class="carousel-item">
-					<img class="d-block w-100" src="@(i.Value<MediaWithCrops>("CarouselImage").MediaItem.Url())">
+					<img class="d-block w-100" src="@(i.Value<MediaWithCrops>("BannerImage").MediaItem.Url())">
 					<div class="carousel-caption d-none d-md-block">
-						<h5>@i.Value("CarouselItemHeader")</h5>
-						<p>@i.Value("CarouselItemDescription")</p>
+						<h5>@i.Value("BannerHeader")</h5>
+						<p>@i.Value("BannerDescription")</p>
 					</div>
 				</div>
 			}
+
 		</div>
 		<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 			<span class="carousel-control-prev-icon" aria-hidden="true"></span>

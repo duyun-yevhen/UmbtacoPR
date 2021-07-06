@@ -6,9 +6,9 @@ namespace UmbracoProject
 	[ViewComponent(Name = "CarouselContent")]
 	public class CarouselComponent : ViewComponent
 	{
-		public IViewComponentResult Invoke(IPublishedElement video)
+		public IViewComponentResult Invoke(object carousel)
 		{
-			return View("_CarouselView", video);
+			return View("_CarouselView", carousel);
 		}
 	}
 }

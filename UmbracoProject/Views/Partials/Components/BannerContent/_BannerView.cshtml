@@ -1,0 +1,11 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<BannerContent>
+
+<div class="container shadow p-3">
+	<img class="d-block w-100" src="@(Model.BanerImage.MediaItem.Url())">
+	<div class="carousel-caption d-none d-md-block">
+		<h5>@Model.BanerHeader")</h5>
+		<p>@Model.BanerDescription"</p>
+	</div>
+</div>
+
+

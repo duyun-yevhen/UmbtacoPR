@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Umbraco.Cms.Core.Models.PublishedContent;
 
 namespace UmbracoProject
 {
 	[ViewComponent(Name = "VideoContent")]
 	public class VideoComponent : ViewComponent
 	{
-		public IViewComponentResult Invoke(IPublishedElement video)
+		public IViewComponentResult Invoke(object video)
 		{
 			return View("_VideoView", video);
 		}

@@ -6,11 +6,13 @@
 	Layout = "_Layout.cshtml";
 }
 
-	@foreach (var item in Model.Value<IEnumerable<IPublishedElement>>("Elements"))
+@foreach (var item in Model.Value<IEnumerable<IPublishedElement>>("Elements"))
+{
 	{
 		<div class="container p-5">
 			@await Component.InvokeAsync(item.ContentType.Alias, item)
 		</div>
-
 	}
+
+}
 

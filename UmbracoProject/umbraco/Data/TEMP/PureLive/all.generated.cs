@@ -5,7 +5,7 @@ using  Umbraco.Cms.Core.PublishedCache;
 using  Umbraco.Cms.Infrastructure.ModelsBuilder;
 using  Umbraco.Cms.Core;
 using  Umbraco.Extensions;
-[assembly:ModelsBuilderAssembly(IsInMemory = true, SourceHash = "90086a4cd2c931da8ac1597973252f2696a53fb3")]
+[assembly:ModelsBuilderAssembly(IsInMemory = true, SourceHash = "2bfae2b4c63b299af66ec7a72fd22e53d5ba9101")]
 [assembly:System.Reflection.AssemblyVersion("0.0.0.6")]
 
 
@@ -78,9 +78,9 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual int ResponseTime => this.Value<int>(_publishedValueFallback, "responseTime");
 	}
 
-	/// <summary>HomePageTemplate</summary>
+	/// <summary>HomePage</summary>
 	[PublishedModel("page")]
-	public partial class Page : PublishedContentModel, IContentBlocks
+	public partial class Page : PublishedContentModel, IContentBlocks, ISEO
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -108,25 +108,32 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// PageName
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		[ImplementPropertyType("pageName")]
-		public virtual string PageName => this.Value<string>(_publishedValueFallback, "pageName");
-
-		///<summary>
-		/// Setting
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		[ImplementPropertyType("setting")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent Setting => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "setting");
-
-		///<summary>
 		/// Elements
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		[ImplementPropertyType("elements")]
 		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedElement> Elements => global::Umbraco.Cms.Web.Common.PublishedModels.ContentBlocks.GetElements(this, _publishedValueFallback);
+
+		///<summary>
+		/// Description
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("description")]
+		public virtual string Description => global::Umbraco.Cms.Web.Common.PublishedModels.SEO.GetDescription(this, _publishedValueFallback);
+
+		///<summary>
+		/// Keywords
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("keywords")]
+		public virtual string Keywords => global::Umbraco.Cms.Web.Common.PublishedModels.SEO.GetKeywords(this, _publishedValueFallback);
+
+		///<summary>
+		/// Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("title")]
+		public virtual string Title => global::Umbraco.Cms.Web.Common.PublishedModels.SEO.GetTitle(this, _publishedValueFallback);
 	}
 
 	/// <summary>NavigationItem</summary>
@@ -511,31 +518,31 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		[ImplementPropertyType("carouselList")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.CarouselItem> CarouselList => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.CarouselItem>>(_publishedValueFallback, "carouselList");
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.BannerContent> CarouselList => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Web.Common.PublishedModels.BannerContent>>(_publishedValueFallback, "carouselList");
 	}
 
-	/// <summary>CarouselItem</summary>
-	[PublishedModel("carouselItem")]
-	public partial class CarouselItem : PublishedElementModel
+	/// <summary>Banner</summary>
+	[PublishedModel("bannerContent")]
+	public partial class BannerContent : PublishedElementModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		public new const string ModelTypeAlias = "carouselItem";
+		public new const string ModelTypeAlias = "bannerContent";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		public new static IPublishedContentType GetModelContentType(IPublishedSnapshotAccessor publishedSnapshotAccessor)
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<CarouselItem, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<BannerContent, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public CarouselItem(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
+		public BannerContent(IPublishedElement content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -544,49 +551,49 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Carousel Image
+		/// Description
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		[ImplementPropertyType("carouselImage")]
-		public virtual global::Umbraco.Core.Models.MediaWithCrops CarouselImage => this.Value<global::Umbraco.Core.Models.MediaWithCrops>(_publishedValueFallback, "carouselImage");
+		[ImplementPropertyType("bannerDescription")]
+		public virtual string BannerDescription => this.Value<string>(_publishedValueFallback, "bannerDescription");
 
 		///<summary>
-		/// Carousel Item Description
+		/// Header
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		[ImplementPropertyType("carouselItemDescription")]
-		public virtual string CarouselItemDescription => this.Value<string>(_publishedValueFallback, "carouselItemDescription");
+		[ImplementPropertyType("bannerHeader")]
+		public virtual string BannerHeader => this.Value<string>(_publishedValueFallback, "bannerHeader");
 
 		///<summary>
-		/// Carousel Item Header
+		/// Image
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		[ImplementPropertyType("carouselItemHeader")]
-		public virtual string CarouselItemHeader => this.Value<string>(_publishedValueFallback, "carouselItemHeader");
+		[ImplementPropertyType("bannerImage")]
+		public virtual global::Umbraco.Core.Models.MediaWithCrops BannerImage => this.Value<global::Umbraco.Core.Models.MediaWithCrops>(_publishedValueFallback, "bannerImage");
 	}
 
-	/// <summary>SEO</summary>
-	[PublishedModel("sEO")]
-	public partial class SEO : PublishedContentModel, INavigationBar, ISotial
+	/// <summary>Settings</summary>
+	[PublishedModel("Settings")]
+	public partial class Settings : PublishedContentModel, INavigationBar, ISotial
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		public new const string ModelTypeAlias = "sEO";
+		public new const string ModelTypeAlias = "Settings";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		public new static IPublishedContentType GetModelContentType(IPublishedSnapshotAccessor publishedSnapshotAccessor)
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<SEO, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<Settings, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public SEO(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public Settings(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -649,6 +656,86 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
 		[ImplementPropertyType("socialLinksMessage")]
 		public virtual string SocialLinksMessage => global::Umbraco.Cms.Web.Common.PublishedModels.Sotial.GetSocialLinksMessage(this, _publishedValueFallback);
+	}
+
+	// Mixin Content Type with alias "sEO"
+	/// <summary>SEO</summary>
+	public partial interface ISEO : IPublishedContent
+	{
+		/// <summary>Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		string Description { get; }
+
+		/// <summary>Keywords</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		string Keywords { get; }
+
+		/// <summary>Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		string Title { get; }
+	}
+
+	/// <summary>SEO</summary>
+	[PublishedModel("sEO")]
+	public partial class SEO : PublishedContentModel, ISEO
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new const string ModelTypeAlias = "sEO";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public new static IPublishedContentType GetModelContentType(IPublishedSnapshotAccessor publishedSnapshotAccessor)
+			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<SEO, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
+#pragma warning restore 0109
+
+		private IPublishedValueFallback _publishedValueFallback;
+
+		// ctor
+		public SEO(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+			: base(content, publishedValueFallback)
+		{
+			_publishedValueFallback = publishedValueFallback;
+		}
+
+		// properties
+
+		///<summary>
+		/// Description
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("description")]
+		public virtual string Description => GetDescription(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static string GetDescription(ISEO that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "description");
+
+		///<summary>
+		/// Keywords
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("keywords")]
+		public virtual string Keywords => GetKeywords(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Keywords</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static string GetKeywords(ISEO that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "keywords");
+
+		///<summary>
+		/// Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		[ImplementPropertyType("title")]
+		public virtual string Title => GetTitle(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "9.0.0-beta004+c41d05f6a67e1d217d565d055a85231792520f88")]
+		public static string GetTitle(ISEO that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "title");
 	}
 
 	/// <summary>Folder</summary>

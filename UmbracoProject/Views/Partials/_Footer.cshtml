@@ -1,19 +1,19 @@
 ﻿@using Umbraco.Cms.Core.Models.PublishedContent
 @using Umbraco.Core.Models
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Page>
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Settings>
 
 <footer class="border-top align-top text-muted box-shadow bg-white">
 	<div class="">
 
 		<div class="col-md-8 container navbar navbar-expand-sm navbar-light border-bottom">
 			<a class="navbar-brand text-nowrap" href="@Model.Root().Url()">
-				<img src="@(Model.Setting.Value<MediaWithCrops>("SiteLogo").MediaItem.MediaUrl())" style="width:64px" />
+				<img src="@(Model.Value<MediaWithCrops>("SiteLogo").MediaItem.MediaUrl())" style="width:64px" />
 
-				@Model.Setting.Value("SiteName")
+				@Model.SiteName
 			</a>
 
 			<ul class="navbar-nav flex-grow-1">
-				@foreach (var navItem in Model.Setting.Value<IEnumerable<IPublishedElement>>("NavItems"))
+				@foreach (var navItem in Model.Value<IEnumerable<IPublishedElement>>("NavItems"))
 				{
 					//if ((bool)navItem.Value("Visible"))
 					{
@@ -25,11 +25,11 @@
 			</ul>
 
 			@{
-				var sotialLinks = Model.Setting.Value<IEnumerable<IPublishedElement>>("SocialLinksList");
+				var sotialLinks = Model.Value<IEnumerable<IPublishedElement>>("SocialLinksList");
 				if (sotialLinks != null)
 				{
 					<div class="h4">
-						@Model.Setting.Value("SocialLinksMessage")
+						@Model.SocialLinksMessage
 					</div>
 
 					<ul class="navbar-nav flex-grow-1">
@@ -49,11 +49,11 @@
 				}
 			}
 		</div>
-		<div class="col-md-6 container-fluid text-center text-md-leftmt-md-0 text-wrap ">
-			<p>@Html.Raw(Model.Setting.Value("SiteDescription").ToString().Replace("\n", "<br />"))</p>
+		<div class="col-md-6 container-fluid text-md-leftmt-md-0 text-wrap ">
+			<p>@Html.Raw(Model.SiteDescription.Replace("\n", "<br />"))</p>
 
-			<div class="footer-copyright text-center border-top">
-				<p>@Html.Raw(Model.Setting.Value("Copyright").ToString().Replace("\n", "<br />"))</p>
+			<div class="footer-copyright border-top">
+				<p>@Html.Raw(Model.Copyright.Replace("\n", "<br />"))</p>
 			</div>
 		</div>
 

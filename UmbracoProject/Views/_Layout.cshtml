@@ -5,39 +5,19 @@
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Page>
 @inject IContentService ContentService
 
-@{
-	if (Model.Setting == null)
-	{
-		@*var setting = ((IPublishedContent)Model).Ancestors().First(s => s.Value("Setting") != null);
-		IContent content = ContentService.GetById(Model.Id);
-		<br>
-		@content.Properties.First(s => s.Alias == "setting").Id
-		content.Properties.ToList().Remove(First(s => s.Alias == "setting"));
-		<br>
-		@content.Properties.First(s => s.Alias == "setting").Id
-		ContentService.Save(content);
-		<br>
-		@content.Properties.First(s => s.Alias == "setting").Id*@
-
-		//content.SetValue("setting", setting.Value("Setting"));
-		//ContentService.Save(content);
-
-
-		throw new Exception(message: "Setting File not assigned");
-
-	}
-}
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>@(Model.Setting.Value("SiteName").ToString() + " " + Model.PageName.ToString())</title>
+	<title>@(Model.Title)</title>
+	<meta name="description" content="@(Model.Description)">
+	<meta name="keywords" content="@(Model.Keywords)">
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" />
 	<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
 </head>
 
 <body>
-	@await Html.PartialAsync("_Header")
+	@await Html.PartialAsync("_Header", Umbraco.ContentAtRoot().First(s => s.Id == 8057))
 
 	<div class="container shadow">
 		<main role="main">
@@ -45,7 +25,7 @@
 		</main>
 	</div>
 
-	@await Html.PartialAsync("_Footer")
+	@await Html.PartialAsync("_Footer", Umbraco.ContentAtRoot().First(s => s.Id == 8057))
 
 
 

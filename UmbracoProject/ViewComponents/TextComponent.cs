@@ -6,7 +6,7 @@ namespace UmbracoProject
 	[ViewComponent(Name = "TextContent")]
 	public class TextComponent : ViewComponent
 	{
-		public IViewComponentResult Invoke(IPublishedElement text)
+		public IViewComponentResult Invoke(object text)
 		{
 			return View("_TextView", text);
 		}
