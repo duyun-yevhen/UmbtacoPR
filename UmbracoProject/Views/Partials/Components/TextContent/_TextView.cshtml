@@ -1,0 +1,8 @@
+﻿@using Umbraco.Cms.Core.Services
+@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Core.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<TextContent>
+
+<div class="text-left p-3 shadow">
+	<p>@Html.Raw(Model.RichText)</p>
+</div>

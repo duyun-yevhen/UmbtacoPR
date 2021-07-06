@@ -1,10 +1,36 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using Umbraco.Cms.Core.Services
+@using Umbraco.Cms.Core.Models
+@using Umbraco.Cms.Core.Models.PublishedContent
+@using Umbraco.Core.Models
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Page>
+@inject IContentService ContentService
+
+@{
+	if (Model.Setting == null)
+	{
+		@*var setting = ((IPublishedContent)Model).Ancestors().First(s => s.Value("Setting") != null);
+		IContent content = ContentService.GetById(Model.Id);
+		<br>
+		@content.Properties.First(s => s.Alias == "setting").Id
+		content.Properties.ToList().Remove(First(s => s.Alias == "setting"));
+		<br>
+		@content.Properties.First(s => s.Alias == "setting").Id
+		ContentService.Save(content);
+		<br>
+		@content.Properties.First(s => s.Alias == "setting").Id*@
+
+		//content.SetValue("setting", setting.Value("Setting"));
+		//ContentService.Save(content);
 
 
+		throw new Exception(message: "Setting File not assigned");
+
+	}
+}
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>@ViewData["Title"] - TestTest</title>
+	<title>@(Model.Setting.Value("SiteName").ToString() + " " + Model.PageName.ToString())</title>
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" />
 	<link href="~/css/mvc-grid/mvc-grid.css" rel="stylesheet">
@@ -13,8 +39,8 @@
 <body>
 	@await Html.PartialAsync("_Header")
 
-	<div class="container">
-		<main role="main" class="pb-3">
+	<div class="container shadow">
+		<main role="main">
 			@RenderBody()
 		</main>
 	</div>
